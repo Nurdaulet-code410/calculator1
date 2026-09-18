@@ -1,0 +1,54 @@
+def calculator():
+    print("=== Базовый калькулятор ===")
+    print("Доступные операции: +  -  *  /")
+    print("Для выхода введите: q")
+
+    while True:
+        first = input("\nВведите первое число: ")
+
+        if first.lower() == "q":
+            print("Калькулятор завершён.")
+            break
+
+        try:
+            num1 = float(first)
+        except ValueError:
+            print("Ошибка: введите число.")
+            continue
+
+        operation = input("Введите операцию (+, -, *, /): ")
+
+        if operation.lower() == "q":
+            break
+
+        if operation not in ["+", "-", "*", "/"]:
+            print("Ошибка: неизвестная операция.")
+            continue
+
+        try:
+            num2 = float(input("Введите второе число: "))
+        except ValueError:
+            print("Ошибка: введите число.")
+            continue
+
+        if operation == "+":
+            result = num1 + num2
+
+        elif operation == "-":
+            result = num1 - num2
+
+        elif operation == "*":
+            result = num1 * num2
+
+        elif operation == "/":
+            if num2 == 0:
+                print("Ошибка: деление на ноль невозможно.")
+                continue
+
+            result = num1 / num2
+
+        print(f"Результат: {result:g}")
+
+
+if __name__ == "__main__":
+    calculator()
